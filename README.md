@@ -14,3 +14,10 @@ golang 典型常用工具包
  
 ## net 网络相关工具
 * gindefault 为经典http server ，gin 提供的默认模板，避免每个项目一上来就设置一堆。比如时区默认设置为Asia/Shanghai，跨域什么的。
+
+    example:
+```
+    gindefault.Run(":80", func(engine *gin.Engine) {
+        //在此定定义gin的其他
+    })
+```
