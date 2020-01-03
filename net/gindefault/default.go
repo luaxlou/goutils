@@ -29,8 +29,6 @@ func Run(addr string, initial func(engine *gin.Engine)) {
 	engine.Run(addr)
 }
 
-
-
 func ReturnSuccess(c *gin.Context, data interface{}) {
 	c.JSON(200, gin.H{
 		"status": 1,
@@ -45,6 +43,17 @@ func ReturnFail(c *gin.Context, msg string) {
 	c.JSON(200, gin.H{
 		"status": 0,
 		"msg":    msg,
+	})
+
+	c.Abort()
+
+}
+func ReturnError(c *gin.Context, err error) {
+
+	fmt.Println(err.Error())
+	c.JSON(200, gin.H{
+		"status": 0,
+		"msg":    err.Error(),
 	})
 
 	c.Abort()
