@@ -9,7 +9,7 @@ golang 典型常用工具包
 * logutils 打印对象更漂亮
 
 ## db 数据库
-* mongodb 对官方驱动Mongo 官方驱动的封装
+* mongodb 对官方驱动Mongo 官方驱动的封装，对常规CRUD进行了简化，具体看代码 [db/mongodb/utils.go](db/mongodb/utils.go)
 
  
  
