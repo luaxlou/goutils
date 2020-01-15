@@ -9,7 +9,8 @@ golang 典型常用工具包
 * logutils 打印对象更漂亮
 
 ## db 数据库
-* mongodb 使用官方驱动单例连接管理
+* mongodb 对官方驱动Mongo 官方驱动的封装
+
  
  
 ## net 网络相关工具

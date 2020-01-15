@@ -2,6 +2,7 @@ package ginutils
 
 import (
 	"fmt"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -35,4 +36,3 @@ func ReturnError(c *gin.Context, err error) {
 	c.Abort()
 
 }
-
