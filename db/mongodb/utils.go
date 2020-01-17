@@ -8,9 +8,14 @@ import (
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
-func FindOneById(collectionName string, idHex string, obj interface{}) error {
+func HexToObjectId(s string) primitive.ObjectID {
 
-	id, _ := primitive.ObjectIDFromHex(idHex)
+	objId, _ := primitive.ObjectIDFromHex(s)
+
+	return objId
+}
+
+func FindOneById(collectionName string, id primitive.ObjectID, obj interface{}) error {
 
 	filter := bson.D{
 		{"_id", id},
@@ -66,6 +71,6 @@ func InsertOne(collectionName string, obj interface{}) (string, error) {
 		return "", err
 	}
 
-	return res.InsertedID.(string), err
+	return res.InsertedID.(primitive.ObjectID).Hex(), err
 
 }
