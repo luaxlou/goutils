@@ -2,7 +2,6 @@ package mongodb
 
 import (
 	"context"
-	"log"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/bson/primitive"
@@ -14,8 +13,6 @@ func FindOneById(collectionName string, id primitive.ObjectID, obj interface{}, 
 	filter := bson.D{
 		{"_id", id},
 	}
-
-	log.Println(id)
 
 	return FindOne(collectionName, filter, obj, opts...)
 
@@ -57,6 +54,14 @@ func DeleteOne(collectionName string, filter interface{}, opts ...*options.Delet
 
 }
 
+func DeleteMany(collectionName string, filter interface{}, opts ...*options.DeleteOptions) error {
+
+	_, err := GetDB().Collection(collectionName).DeleteMany(context.Background(), filter, opts...)
+
+	return err
+
+}
+
 func InsertOne(collectionName string, obj interface{}, opts ...*options.InsertOneOptions) (string, error) {
 
 	res, err := GetDB().Collection(collectionName).InsertOne(context.Background(), obj, opts...)
@@ -66,5 +71,43 @@ func InsertOne(collectionName string, obj interface{}, opts ...*options.InsertOn
 	}
 
 	return res.InsertedID.(primitive.ObjectID).Hex(), err
+
+}
+
+func Aggregate(collectionName string, pipeline interface{}, objs interface{}, opts ...*options.AggregateOptions) error {
+
+	cur, err := GetDB().Collection(collectionName).Aggregate(context.Background(), pipeline, opts...)
+
+	if err != nil {
+		return err
+	}
+
+	return cur.All(context.Background(), objs)
+
+}
+
+type SumResult struct {
+	Total int64 `bson:"total"`
+}
+
+func Sum(collectionName string, columnName string, filter interface{}) int64 {
+
+	pipeline := []bson.M{
+		{"$match": filter},
+		{"$group": bson.M{
+			"_id":   nil,
+			"total": bson.M{"$sum": "$" + columnName},
+		}},
+	}
+
+	var res []SumResult
+
+	err := Aggregate(collectionName, pipeline, &res)
+
+	if err != nil || len(res) == 0 {
+		return 0
+	}
+
+	return res[0].Total
 
 }
