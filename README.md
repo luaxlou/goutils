@@ -11,6 +11,9 @@ Golang 典型常用工具包，解决服务端开发的常用场景，提高每�
     logutils.PrintObj(some Obj)
 ```
 
+* dateutils 日期工具类
+具体看代码 [](tools/dateutils.go)
+
 ## db 数据库
 * mongodb 对官方驱动Mongo 官方驱动的封装，对常规CRUD进行了简化，具体看代码 [db/mongodb/crud.go](db/mongodb/curd.go)
 
@@ -22,7 +25,7 @@ Golang 典型常用工具包，解决服务端开发的常用场景，提高每�
     example:
 ```
     gindefault.Run(":80", func(engine *gin.Engine) {
-        //在此定定义gin的其他
+        //在此定义gin的其他
     })
 ```
 * ginutils 牺牲灵活性，对返回进行了标准化。
