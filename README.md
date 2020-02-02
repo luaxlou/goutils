@@ -38,4 +38,5 @@ Golang 典型常用工具包，解决服务端开发的常用场景，提高每�
 
 * ip2location 自动下载ip数据库，内存中识别ip对应地址。
 使用方法 ip2location.GetLocation(ip),
-依赖项目：[https://github.com/lionsoul2014/ip2region/]https://github.com/lionsoul2014/ip2region/
+依赖项目：[https://github.com/lionsoul2014/ip2region/](https://github.com/lionsoul2014/ip2region/)
+具体看测试用例： [net/ip2location/ip2location_test.go](net/ip2location/ip2location_test.go)
