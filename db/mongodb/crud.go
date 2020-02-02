@@ -74,6 +74,18 @@ func InsertOne(collectionName string, obj interface{}, opts ...*options.InsertOn
 
 }
 
+func Count(collectionName string, obj interface{}, opts ...*options.CountOptions) (int64, error) {
+
+	n, err := GetDB().Collection(collectionName).CountDocuments(context.Background(), obj, opts...)
+
+	if err != nil {
+		return 0, err
+	}
+
+	return n, nil
+
+}
+
 func Aggregate(collectionName string, pipeline interface{}, objs interface{}, opts ...*options.AggregateOptions) error {
 
 	cur, err := GetDB().Collection(collectionName).Aggregate(context.Background(), pipeline, opts...)

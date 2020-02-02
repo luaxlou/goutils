@@ -11,8 +11,11 @@ Golang 典型常用工具包，解决服务端开发的常用场景，提高每�
     logutils.PrintObj(some Obj)
 ```
 
-* dateutils 日期工具类
+* dateutils 日期工具类，后面根据需求添加
 具体看代码 [tools/dateutils/dateutils.go](tools/dateutils/dateutils.go)
+
+* fileutils 文件工具类，目前较简单，后面根据需求添加
+具体看代码 [tools/fileutils/fileutils.go](tools/fileutils/fileutils.go)
 
 ## db 数据库
 * mongodb 对官方驱动Mongo 官方驱动的封装，对常规CRUD进行了简化，具体看代码 [db/mongodb/crud.go](db/mongodb/curd.go)
@@ -31,3 +34,8 @@ Golang 典型常用工具包，解决服务端开发的常用场景，提高每�
 * ginutils 牺牲灵活性，对返回进行了标准化。
 {status:1,msg:'success',data:some Object}
 具体看代码 [net/ginutils/utils.go](net/ginutils/utils.go)
+
+
+* ip2location 自动下载ip数据库，内存中识别ip对应地址。
+使用方法 ip2location.GetLocation(ip),
+依赖项目：[https://github.com/lionsoul2014/ip2region/]https://github.com/lionsoul2014/ip2region/
