@@ -12,7 +12,7 @@ Golang 典型常用工具包，解决服务端开发的常用场景，提高每�
 ```
 
 * dateutils 日期工具类
-具体看代码 [tools/dateutils.go](tools/dateutils.go)
+具体看代码 [tools/dateutils/dateutils.go](tools/dateutils/dateutils.go)
 
 ## db 数据库
 * mongodb 对官方驱动Mongo 官方驱动的封装，对常规CRUD进行了简化，具体看代码 [db/mongodb/crud.go](db/mongodb/curd.go)
