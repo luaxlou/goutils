@@ -62,15 +62,15 @@ func DeleteMany(collectionName string, filter interface{}, opts ...*options.Dele
 
 }
 
-func InsertOne(collectionName string, obj interface{}, opts ...*options.InsertOneOptions) (string, error) {
+func InsertOne(collectionName string, obj interface{}, opts ...*options.InsertOneOptions) (primitive.ObjectID, error) {
 
 	res, err := GetDB().Collection(collectionName).InsertOne(context.Background(), obj, opts...)
 
 	if err != nil {
-		return "", err
+		return primitive.ObjectID{}, err
 	}
 
-	return res.InsertedID.(primitive.ObjectID).Hex(), err
+	return res.InsertedID.(primitive.ObjectID), err
 
 }
 
