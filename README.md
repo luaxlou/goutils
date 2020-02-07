@@ -17,6 +17,11 @@ Golang 典型常用工具包，解决服务端开发的常用场景，提高每�
 * fileutils 文件工具类，目前较简单，后面根据需求添加
 具体看代码 [tools/fileutils/fileutils.go](tools/fileutils/fileutils.go)
 
+
+* envutils APP环境变量管理工具,如envutils.IsProd(),用于判断当前是否属于生产环境
+具体看代码 [tools/envutils/envutils.go](tools/envutils/envutils.go)
+
+
 ## db 数据库
 * mongodb 对官方驱动Mongo 官方驱动的封装，对常规CRUD进行了简化，具体看代码 [db/mongodb/crud.go](db/mongodb/curd.go)
 

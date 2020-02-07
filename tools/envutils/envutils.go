@@ -26,7 +26,7 @@ func SetEnv(env string) {
 }
 
 func IsProd() bool {
-	return currEnv == Prod
+	return currEnv == Test
 
 }
 
