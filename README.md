@@ -22,6 +22,14 @@ Golang 典型常用工具包，解决服务端开发的常用场景，提高每�
 具体看代码 [tools/envutils/envutils.go](tools/envutils/envutils.go)
 
 
+## wechat 微信相关API的开发
+* corpwechat 企业微信API封装， 对 access_token 做了lazy load 和过期刷新
+# [checkbox:checked] GetAccessToken 单独获得access_token,以便做扩展开发用。
+# [checkbox:checked] GetUserInfo 获取 UserId
+
+
+
+
 ## db 数据库
 * mongodb 对官方驱动Mongo 官方驱动的封装，对常规CRUD进行了简化，具体看代码 [db/mongodb/crud.go](db/mongodb/curd.go)
 
