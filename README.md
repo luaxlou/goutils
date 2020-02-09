@@ -24,8 +24,8 @@ Golang 典型常用工具包，解决服务端开发的常用场景，提高每�
 
 ## wechat 微信相关API的开发
 * corpwechat 企业微信API封装， 对 access_token 做了lazy load 和过期刷新
-[x] GetAccessToken 单独获得access_token,以便做扩展开发用。
-[x] GetUserInfo 获取 UserId
+ [x] GetAccessToken 单独获得access_token,以便做扩展开发用。
+ [x] GetUserInfo 获取 UserId
 
 
 
