@@ -6,50 +6,51 @@ Golang 典型常用工具包，解决服务端开发的常用场景，提高每�
 
 
 ## tools 工具库 
-* logutils 打印对象更漂亮
+### logutils 打印对象更漂亮
 ```
     logutils.PrintObj(some Obj)
 ```
 
-* dateutils 日期工具类，后面根据需求添加
+### dateutils 日期工具类，后面根据需求添加
 具体看代码 [tools/dateutils/dateutils.go](tools/dateutils/dateutils.go)
 
-* fileutils 文件工具类，目前较简单，后面根据需求添加
+### fileutils 文件工具类，目前较简单，后面根据需求添加
 具体看代码 [tools/fileutils/fileutils.go](tools/fileutils/fileutils.go)
 
 
-* envutils APP环境变量管理工具,如envutils.IsProd(),用于判断当前是否属于生产环境
+### envutils APP环境变量管理工具,如envutils.IsProd(),用于判断当前是否属于生产环境
 具体看代码 [tools/envutils/envutils.go](tools/envutils/envutils.go)
 
 
 ## wechat 微信相关API的开发
-* corpwechat 企业微信API封装， 对 access_token 做了lazy load 和过期刷新
- [x] GetAccessToken 单独获得access_token,以便做扩展开发用。
- [x] GetUserInfo 获取 UserId
+### corpwechat 企业微信API封装， 对 access_token 做了lazy load 和过期刷新
+- [x] GetAccessToken 单独获得access_token,以便做扩展开发用。
+- [x] GetUserInfo 获取 UserId
 
 
 
 
 ## db 数据库
-* mongodb 对官方驱动Mongo 官方驱动的封装，对常规CRUD进行了简化，具体看代码 [db/mongodb/crud.go](db/mongodb/curd.go)
+### mongodb 对官方驱动Mongo 官方驱动的封装，对常规CRUD进行了简化。
+具体看代码 [db/mongodb/crud.go](db/mongodb/curd.go)
 
  
  
 ## net 网络相关工具
-* gindefault 为经典http server ，gin 提供的默认模板，避免每个项目一上来就设置一堆。比如时区默认设置为Asia/Shanghai，跨域什么的。
+### gindefault 为经典http server ，gin 提供的默认模板，避免每个项目一上来就设置一堆。比如时区默认设置为Asia/Shanghai，跨域什么的。
 
-    example:
+example:
 ```
     gindefault.Run(":80", func(engine *gin.Engine) {
         //在此定义gin的其他
     })
 ```
-* ginutils 牺牲灵活性，对返回进行了标准化。
+### ginutils 牺牲灵活性，对返回进行了标准化。
 {status:1,msg:'success',data:some Object}
 具体看代码 [net/ginutils/utils.go](net/ginutils/utils.go)
 
 
-* ip2location 自动下载ip数据库，内存中识别ip对应地址。
+### ip2location 自动下载ip数据库，内存中识别ip对应地址。
 使用方法 
 
 ```
