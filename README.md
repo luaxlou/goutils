@@ -25,7 +25,7 @@ Golang 典型常用工具包，解决服务端开发的常用场景，提高每�
 
 
 ### envutils
-APP环境变量管理工具,如envutils.IsProd(),用于判断当前是否属于生产环境。
+APP环境变量管理工具,如envutils.IsProd()，用于判断当前是否属于生产环境。
 
 具体看代码 [tools/envutils/envutils.go](tools/envutils/envutils.go)
 
@@ -34,8 +34,8 @@ APP环境变量管理工具,如envutils.IsProd(),用于判断当前是否属于�
 ### corpwechat 
 企业微信API封装， 对 access_token 做了lazy load 和过期刷新。
 
-- [x] GetAccessToken 单独获得access_token,以便做扩展开发用。
-- [x] GetUserInfo 获取 UserId
+- [x] GetAccessToken 单独获得access_token，以便做扩展开发用。
+- [x] GetUserInfo 获取 UserId。
 
 
 
@@ -58,12 +58,16 @@ example:
         //在此定义gin的其他
     })
 ```
-### ginutils 牺牲灵活性，对返回进行了标准化。
+### ginutils 
+牺牲灵活性，对返回进行了标准化。
+
 {status:1,msg:'success',data:some Object}
+
 具体看代码 [net/ginutils/utils.go](net/ginutils/utils.go)
 
 
-### ip2location 自动下载ip数据库，内存中识别ip对应地址。
+### ip2location 
+自动下载ip数据库，内存中识别ip对应地址。
 使用方法 
 
 ```
