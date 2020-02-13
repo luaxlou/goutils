@@ -1,4 +1,4 @@
-package corpwechat
+package client
 
 import (
 	"errors"
@@ -6,14 +6,12 @@ import (
 	"log"
 	"time"
 
-	"git.witalk.cn/exmall/exmall-admin/constants"
 	"github.com/luaxlou/gohttpclient"
+	"github.com/luaxlou/goutils/wechat/corpwechat"
 	"github.com/xen0n/go-workwx"
 )
 
-var Host = "https://qyapi.weixin.qq.com"
-
-type App struct {
+type Client struct {
 	corpId        string
 	secret        string
 	accessToken   string
@@ -21,9 +19,9 @@ type App struct {
 	lastTokenTime time.Time
 }
 
-func New(corpId, secret string) *App {
+func New(corpId, secret string) *Client {
 
-	c := App{
+	c := Client{
 		corpId:        corpId,
 		secret:        secret,
 		lastTokenTime: time.Now(),
@@ -39,13 +37,13 @@ type GetAccessTokenRes struct {
 	ExpiresIn   int    `json:"expires_in"`
 }
 
-func (c *App) GetAccessToken() string {
+func (c *Client) GetAccessToken() string {
 
 	t := time.Now()
 
 	if c.accessToken == "" || t.Sub(c.lastTokenTime).Seconds() > 7200 {
 
-		url := fmt.Sprintf(Host+"/cgi-bin/gettoken?corpid=%s&corpsecret=%s", constants.QRWechatCorpId, constants.QRWechatSecret)
+		url := fmt.Sprintf(corpwechat.Host+"/cgi-bin/gettoken?corpid=%s&corpsecret=%s", c.corpId, c.secret)
 
 		var res GetAccessTokenRes
 
@@ -73,10 +71,10 @@ type GetUserInfoRes struct {
 	UserId  string `json:"UserId"`
 }
 
-func (c *App) GetUserInfo(code string) (string, error) {
+func (c *Client) GetUserInfo(code string) (string, error) {
 
 	token := c.GetAccessToken()
-	url := fmt.Sprintf(Host+"/cgi-bin/user/getuserinfo?access_token=%s&code=%s", token, code)
+	url := fmt.Sprintf(corpwechat.Host+"/cgi-bin/user/getuserinfo?access_token=%s&code=%s", token, code)
 
 	var res GetUserInfoRes
 
