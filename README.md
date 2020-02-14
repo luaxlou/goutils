@@ -30,12 +30,14 @@ APP环境变量管理工具,如envutils.IsProd()，用于判断当前是否属�
 具体看代码 [tools/envutils/envutils.go](tools/envutils/envutils.go)
 
 
+
 ## wechat 微信相关API的开发
 ### corpwechat 
 企业微信API封装， 对 access_token 做了lazy load 和过期刷新。
 
 - [x] GetAccessToken 单独获得access_token，以便做扩展开发用。
 - [x] GetUserInfo 获取 UserId。
+- [x] SendTextMessage 获取 发送消息。
 
 
 
