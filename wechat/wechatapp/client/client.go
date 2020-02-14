@@ -8,8 +8,7 @@ import (
 	"github.com/luaxlou/gohttpclient"
 )
 
-Host = "https://api.weixin.qq.com"
-
+const Host = "https://api.weixin.qq.com"
 
 type Res struct {
 	Errcode int    `json:"errcode"`

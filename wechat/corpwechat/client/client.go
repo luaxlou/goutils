@@ -9,7 +9,7 @@ import (
 	"github.com/luaxlou/gohttpclient"
 )
 
-var Host = "https://qyapi.weixin.qq.com"
+const Host = "https://qyapi.weixin.qq.com"
 
 type Client struct {
 	corpId        string
