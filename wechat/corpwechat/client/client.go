@@ -7,7 +7,6 @@ import (
 	"time"
 
 	"github.com/luaxlou/gohttpclient"
-	"github.com/luaxlou/goutils/wechat/corpwechat"
 )
 
 var Host = "https://qyapi.weixin.qq.com"
@@ -43,7 +42,7 @@ func (c *Client) GetAccessToken() string {
 
 	if c.accessToken == "" || t.Sub(c.lastTokenTime).Seconds() > 7200 {
 
-		url := fmt.Sprintf(corpwechat.Host+"/cgi-bin/gettoken?corpid=%s&corpsecret=%s", c.corpId, c.secret)
+		url := fmt.Sprintf(Host+"/cgi-bin/gettoken?corpid=%s&corpsecret=%s", c.corpId, c.secret)
 
 		var res GetAccessTokenRes
 
@@ -74,7 +73,7 @@ type GetUserInfoRes struct {
 func (c *Client) GetUserInfo(code string) (string, error) {
 
 	token := c.GetAccessToken()
-	url := fmt.Sprintf(corpwechat.Host+"/cgi-bin/user/getuserinfo?access_token=%s&code=%s", token, code)
+	url := fmt.Sprintf(Host+"/cgi-bin/user/getuserinfo?access_token=%s&code=%s", token, code)
 
 	var res GetUserInfoRes
 
