@@ -44,16 +44,16 @@ func (c *Client) Login(code string) (LoginRes, error) {
 
 	url := fmt.Sprintf(Host+"/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code", c.appId, c.secret, code)
 
-	var res GetUserInfoRes
+	var res LoginRes
 
 	_, err := gohttpclient.Get(url).Exec().RenderJSON(&res)
 
 	if err != nil {
 
-		return "", err
+		return res, err
 	} else if res.Errcode != 0 {
 
-		return "", errors.New(res.Errmsg)
+		return res, errors.New(res.Errmsg)
 
 	}
 
