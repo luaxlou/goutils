@@ -5,7 +5,6 @@ import (
 	"fmt"
 
 	"github.com/luaxlou/gohttpclient"
-	"github.com/luaxlou/goutils/tools/logutils"
 	"github.com/luaxlou/goutils/wechat/corpwechat/client"
 )
 
@@ -59,9 +58,6 @@ func (c *Message) SendTextMessage(req SendTextMessageReq) error {
 	var res SendRes
 
 	_, err := gohttpclient.PostBody(url, &req).Exec().RenderJSON(&res)
-
-	logutils.PrintObj(req)
-	logutils.PrintObj(res)
 
 	if err != nil {
 
