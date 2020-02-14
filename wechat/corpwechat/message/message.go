@@ -6,7 +6,6 @@ import (
 
 	"github.com/luaxlou/gohttpclient"
 	"github.com/luaxlou/goutils/tools/logutils"
-	"github.com/luaxlou/goutils/wechat/corpwechat"
 	"github.com/luaxlou/goutils/wechat/corpwechat/client"
 )
 
@@ -55,7 +54,7 @@ func (c *Message) SendTextMessage(req SendTextMessageReq) error {
 	req.AgentId = c.agentId
 
 	token := c.client.GetAccessToken()
-	url := fmt.Sprintf(corpwechat.Host+"/cgi-bin/message/send?access_token=%s", token)
+	url := fmt.Sprintf(client.Host+"/cgi-bin/message/send?access_token=%s", token)
 
 	var res SendRes
 

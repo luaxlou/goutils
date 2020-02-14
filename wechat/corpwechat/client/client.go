@@ -8,14 +8,14 @@ import (
 
 	"github.com/luaxlou/gohttpclient"
 	"github.com/luaxlou/goutils/wechat/corpwechat"
-	"github.com/xen0n/go-workwx"
 )
+
+var Host = "https://qyapi.weixin.qq.com"
 
 type Client struct {
 	corpId        string
 	secret        string
 	accessToken   string
-	app           *workwx.WorkwxApp
 	lastTokenTime time.Time
 }
 
