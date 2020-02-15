@@ -1,9 +1,8 @@
-package client
+package wechatapp
 
 import (
 	"errors"
 	"fmt"
-	"time"
 
 	"github.com/luaxlou/gohttpclient"
 )
@@ -15,19 +14,16 @@ type Res struct {
 	Errmsg  string `json:"errmsg"`
 }
 
-type Client struct {
-	appId         string
-	secret        string
-	accessToken   string
-	lastTokenTime time.Time
+type App struct {
+	appId  string
+	secret string
 }
 
-func New(appId, secret string) *Client {
+func New(appId, secret string) *App {
 
-	c := Client{
-		appId:         appId,
-		secret:        secret,
-		lastTokenTime: time.Now(),
+	c := App{
+		appId:  appId,
+		secret: secret,
 	}
 
 	return &c
@@ -40,7 +36,7 @@ type LoginRes struct {
 	UnionID    string `json:"unionid"`
 }
 
-func (c *Client) Login(code string) (LoginRes, error) {
+func (c *App) Login(code string) (LoginRes, error) {
 
 	url := fmt.Sprintf(Host+"/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code", c.appId, c.secret, code)
 

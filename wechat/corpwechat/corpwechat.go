@@ -1,4 +1,4 @@
-package client
+package corpwechat
 
 import (
 	"errors"
@@ -11,18 +11,25 @@ import (
 
 const Host = "https://qyapi.weixin.qq.com"
 
-type Client struct {
+type Res struct {
+	Errcode int    `json:"errcode"`
+	Errmsg  string `json:"errmsg"`
+}
+
+type App struct {
 	corpId        string
 	secret        string
 	accessToken   string
+	agentId       int64
 	lastTokenTime time.Time
 }
 
-func New(corpId, secret string) *Client {
+func New(corpId, secret string, agentId int64) *App {
 
-	c := Client{
+	c := App{
 		corpId:        corpId,
 		secret:        secret,
+		agentId:       agentId,
 		lastTokenTime: time.Now(),
 	}
 
@@ -30,13 +37,12 @@ func New(corpId, secret string) *Client {
 }
 
 type GetAccessTokenRes struct {
-	Errcode     int    `json:"errcode"`
-	Errmsg      string `json:"errmsg"`
+	Res
 	AccessToken string `json:"access_token"`
 	ExpiresIn   int    `json:"expires_in"`
 }
 
-func (c *Client) GetAccessToken() string {
+func (c *App) GetAccessToken() string {
 
 	t := time.Now()
 
@@ -65,12 +71,11 @@ func (c *Client) GetAccessToken() string {
 }
 
 type GetUserInfoRes struct {
-	Errcode int    `json:"errcode"`
-	Errmsg  string `json:"errmsg"`
-	UserId  string `json:"UserId"`
+	Res
+	UserId string `json:"UserId"`
 }
 
-func (c *Client) GetUserInfo(code string) (string, error) {
+func (c *App) GetUserInfo(code string) (string, error) {
 
 	token := c.GetAccessToken()
 	url := fmt.Sprintf(Host+"/cgi-bin/user/getuserinfo?access_token=%s&code=%s", token, code)

@@ -1,6 +1,8 @@
 package mongoutils
 
 import (
+	"strings"
+
 	"go.mongodb.org/mongo-driver/bson/primitive"
 )
 
@@ -18,4 +20,14 @@ func CalcPageOffset(rowsPerPage, pageNo int64) int64 {
 	}
 
 	return rowsPerPage * (pageNo - 1)
+}
+
+func IsDuplicateError(err error) bool {
+	if err != nil {
+		if strings.Contains(err.Error(), "dup") {
+			return true
+		}
+	}
+
+	return false
 }

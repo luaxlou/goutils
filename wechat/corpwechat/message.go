@@ -1,31 +1,14 @@
-package message
+package corpwechat
 
 import (
 	"errors"
 	"fmt"
 
 	"github.com/luaxlou/gohttpclient"
-	"github.com/luaxlou/goutils/wechat/corpwechat/client"
 )
 
-type Message struct {
-	client  *client.Client `json:"message"`
-	agentId int64
-}
-
-func New(c *client.Client, agentId int64) *Message {
-
-	msg := Message{
-		client:  c,
-		agentId: agentId,
-	}
-
-	return &msg
-}
-
 type SendRes struct {
-	Errcode      int    `json:"errcode"`
-	Errmsg       string `json:"errmsg"`
+	Res
 	InvalidUser  string `json:"invaliduser"`
 	InvalidParty string `json:"invalidparty"`
 	InvalidTag   string `json:"invalidtag"`
@@ -41,19 +24,19 @@ type SendTextMessageReq struct {
 	ToTag                string      `json:"totag"`
 	MsgType              string      `json:"msgtype"`
 	AgentId              int64       `json:"agentid"`
-	Text                 TextMessage `json:"text"`
 	Safe                 int         `json:"safe"`
 	EnableIdTrans        int         `json:"enable_id_trans"`
 	EnableDuplicateCheck int         `json:"enable_duplicate_check"`
+	Text                 TextMessage `json:"text"`
 }
 
-func (c *Message) SendTextMessage(req SendTextMessageReq) error {
+func (c *App) SendTextMessage(req SendTextMessageReq) error {
 
 	req.MsgType = "text"
 	req.AgentId = c.agentId
 
-	token := c.client.GetAccessToken()
-	url := fmt.Sprintf(client.Host+"/cgi-bin/message/send?access_token=%s", token)
+	token := c.GetAccessToken()
+	url := fmt.Sprintf(Host+"/cgi-bin/message/send?access_token=%s", token)
 
 	var res SendRes
 
