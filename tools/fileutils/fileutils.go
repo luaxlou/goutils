@@ -16,6 +16,30 @@ func Exists(pathname string) bool {
 	return false
 }
 
+func IsDir(pathname string) bool {
+	s, err := os.Stat(pathname)
+	if err != nil {
+		return false
+	}
+	return s.IsDir()
+}
+
+func MkDir(dirname string) error {
+
+	return os.MkdirAll(dirname, os.ModePerm)
+
+}
+
+func MkDirIfNotExists(dirname string) error {
+
+	if IsDir((dirname)) {
+		return nil
+	}
+
+	return MkDir(dirname)
+
+}
+
 func Remove(pathname string) error {
 
 	return os.Remove(pathname)
