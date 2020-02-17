@@ -25,6 +25,20 @@ func ReturnFail(c *gin.Context, msg string) {
 	c.Abort()
 
 }
+
+func ReturnFailWithCode(c *gin.Context, msg string, code int) {
+
+	fmt.Println(msg)
+	c.JSON(200, gin.H{
+		"status": 0,
+		"code":   code,
+		"msg":    msg,
+	})
+
+	c.Abort()
+
+}
+
 func ReturnError(c *gin.Context, err error) {
 
 	fmt.Println(err.Error())
