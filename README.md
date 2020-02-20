@@ -19,9 +19,14 @@ Golang 典型常用工具包，解决服务端开发的常用场景，提高每�
 具体看代码 [tools/dateutils/dateutils.go](tools/dateutils/dateutils.go)
 
 ### fileutils 
-文件工具类，目前较简单，后面根据需求添加。
+文件工具类， 后面根据需求添加。
 
-具体看代码 [tools/fileutils/fileutils.go](tools/fileutils/fileutils.go)
+
+- [x] Exists
+- [x] IsDir  
+- [x] MkDir 
+- [x] MkDirIfNotExists 
+- [x] Remove 
 
 
 ### envutils
