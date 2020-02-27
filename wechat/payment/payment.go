@@ -70,6 +70,8 @@ func (w *Payment) HandleNotify(c *gin.Context, onSucc, onFail func(rawBody strin
 	if w.client.VerifySign(mv["xml"].(map[string]interface{}), mv["xml"].(map[string]interface{})["sign"].(string)) {
 		record, err := json.Marshal(wx_notify_req)
 
+		onSucc(rawBody)
+
 		logutils.PrintObj(record)
 		if err != nil {
 			log.Error(err, "wechat pay marshal err :"+err.Error())
@@ -79,6 +81,9 @@ func (w *Payment) HandleNotify(c *gin.Context, onSucc, onFail func(rawBody strin
 			"return_msg":  "OK",
 		})
 	} else {
+
+		onFail(rawBody)
+
 		c.XML(http.StatusOK, gin.H{
 			"return_code": "FAIL",
 			"return_msg":  "failed to verify sign, please retry!",
