@@ -41,6 +41,7 @@ func (c *Payment) Pay(tradeNo string, totalFee int, subject string, notifyUrl st
 	pay_data.OutTradeNo = tradeNo
 	pay_data.Openid = openId
 
+	logutils.PrintObj(pay_data)
 	return c.client.Pay(pay_data)
 }
 
