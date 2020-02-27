@@ -86,3 +86,19 @@ func (w *Payment) HandleNotify(c *gin.Context, onSucc, onFail func(rawBody strin
 	}
 	return
 }
+
+const PaySignTemplate = "appId=%s&nonceStr=%s&package=prepay_id=%s&signType=MD5&timeStamp=%d&key=%s"
+
+// 小程序 客户端唤起支付签名
+func (c *Payment) GetPaySign(nonceStr string, prepayId string, ts string) string {
+
+	sign := wechatpay.GetSign(map[string]interface {
+		"appId":c.client.AppId,
+		"nonceStr":nonceStr,
+		"package":"prepay_id="+prepayId,
+		"signType":"MD5",
+		"timeStamp":ts
+	})
+
+	return sign
+}
