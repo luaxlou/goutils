@@ -48,6 +48,7 @@ APP环境变量管理工具,如envutils.IsProd()，用于判断当前是否属�
 小程序API封装
 
 - [x] Login 登陆
+- [x] 手机号解密 摘自 https://github.com/medivhzhan/weapp
 
 ### payment
 
