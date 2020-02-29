@@ -28,7 +28,6 @@ func ReturnFail(c *gin.Context, msg string) {
 
 func ReturnFailWithCode(c *gin.Context, msg string, code int) {
 
-	fmt.Println(msg)
 	c.JSON(200, gin.H{
 		"status": 0,
 		"code":   code,
