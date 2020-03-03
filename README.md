@@ -55,7 +55,8 @@ APP环境变量管理工具,如envutils.IsProd()，用于判断当前是否属�
 微信支付封装,对 github.com/liyoung1992/wechatpay 项目进行了再一次包装
 
 - [x] Pay 支付。
-- [x] HandleNotifyGin 如果使用gin,可以使用此方法进行方便回调,后面可以剥离gin的依赖。
+- [x] VerifyNotify 对支付结果进行验证。
+- [x] GetPaySign 小程序二次签名。
 
 
 
