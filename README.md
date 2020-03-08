@@ -64,7 +64,7 @@ APP环境变量管理工具,如envutils.IsProd()，用于判断当前是否属�
 ## db 数据库
 ### mongo
 对官方驱动Mongo 官方驱动的封装，对常规CRUD进行了简化。
-具体看代码 [db/mongo/crud.go](db/mongo/crud.go)
+具体看代码 [mongo/crud.go](mongo/crud.go)
 
  
  
