@@ -1,4 +1,4 @@
-package mongoutils
+package mongo
 
 import (
 	"strings"

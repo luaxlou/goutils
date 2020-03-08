@@ -1,10 +1,11 @@
 package gindefault
 
 import (
-	"github.com/gin-contrib/cors"
-	"github.com/gin-gonic/gin"
 	"log"
 	"time"
+
+	"github.com/gin-contrib/cors"
+	"github.com/gin-gonic/gin"
 )
 
 func Run(addr string, initial func(engine *gin.Engine)) {

@@ -1,4 +1,4 @@
-package ginutils
+package gindefault
 
 import (
 	"fmt"
