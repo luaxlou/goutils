@@ -79,12 +79,19 @@ example:
         //在此定义gin的其他
     })
 ```
-### ginutils 
+
 牺牲灵活性，对返回进行了标准化。
 
 {status:1,msg:'success',data:some Object}
 
-具体看代码 [net/ginutils/utils.go](net/ginutils/utils.go)
+```
+    gindefault.returnSuccess()
+    gindefault.returnFail()
+    gindefault.returnError()
+
+```
+
+具体看代码 [gindefault/utils.go](gindefault/utils.go)
 
 
 ### ip2location 
@@ -97,4 +104,4 @@ ip2location.GetLocation(ip)
 
 依赖项目：[https://github.com/lionsoul2014/ip2region/](https://github.com/lionsoul2014/ip2region/)
 
-具体看测试用例： [net/ip2location/ip2location_test.go](net/ip2location/ip2location_test.go)
+具体看测试用例： [net/ip2location/ip2location_test.go](ip2location/ip2location_test.go)
