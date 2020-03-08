@@ -104,4 +104,4 @@ ip2location.GetLocation(ip)
 
 依赖项目：[https://github.com/lionsoul2014/ip2region/](https://github.com/lionsoul2014/ip2region/)
 
-具体看测试用例： [net/ip2location/ip2location_test.go](ip2location/ip2location_test.go)
+具体看测试用例： [ip2location/ip2location_test.go](ip2location/ip2location_test.go)
