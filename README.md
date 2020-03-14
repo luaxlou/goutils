@@ -61,14 +61,15 @@ APP环境变量管理工具,如envutils.IsProd()，用于判断当前是否属�
 
 
 
-## db 数据库
 ### mongo
 对官方驱动Mongo 官方驱动的封装，对常规CRUD进行了简化。
 具体看代码 [mongo/crud.go](mongo/crud.go)
 
+
+### mysqldb
+对mysql实例化过程进行了封装，默认使用gorm包装。
  
  
-## net 网络相关工具
 ### gindefault
 
 为经典http server ，gin 提供的默认模板，避免每个项目一上来就设置一堆。比如时区默认设置为Asia/Shanghai，跨域什么的。
