@@ -7,8 +7,6 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-var db *gorm.DB
-
 func New(dsn string) *gorm.DB {
 
 	if dsn == "" {
@@ -18,19 +16,6 @@ func New(dsn string) *gorm.DB {
 	}
 
 	return initDB(dsn)
-
-}
-
-func GetDB() *gorm.DB {
-	return db
-}
-
-func Close() {
-
-	if db != nil {
-		db.Close()
-
-	}
 
 }
 
