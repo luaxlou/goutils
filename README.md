@@ -10,7 +10,7 @@ Golang 典型常用工具包，解决服务端开发的常用场景，提高每�
 
 打印对象更漂亮
 ```
-    logutils.PrintObj(some Obj)
+logutils.PrintObj(some Obj)
 ```
 
 ### dateutils 
@@ -76,9 +76,9 @@ APP环境变量管理工具,如envutils.IsProd()，用于判断当前是否属�
 
 example:
 ```
-    gindefault.Run(":80", func(engine *gin.Engine) {
-        //在此定义gin的其他
-    })
+gindefault.Run(":80", func(engine *gin.Engine) {
+    //在此定义gin的其他
+})
 ```
 
 牺牲灵活性，对返回进行了标准化。
@@ -86,10 +86,9 @@ example:
 {status:1,msg:'success',data:some Object}
 
 ```
-    gindefault.returnSuccess()
-    gindefault.returnFail()
-    gindefault.returnError()
-
+gindefault.returnSuccess()
+gindefault.returnFail()
+gindefault.returnError()
 ```
 
 具体看代码 [gindefault/utils.go](gindefault/utils.go)
