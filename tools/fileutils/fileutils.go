@@ -1,6 +1,9 @@
 package fileutils
 
-import "os"
+import (
+	"io/ioutil"
+	"os"
+)
 
 func Exists(pathname string) bool {
 
@@ -43,4 +46,11 @@ func MkDirIfNotExists(dirname string) error {
 func Remove(pathname string) error {
 
 	return os.Remove(pathname)
+}
+
+func ReadFile(pathname string) []byte {
+
+	bs, _ := ioutil.ReadFile(pathname)
+
+	return bs
 }
