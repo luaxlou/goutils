@@ -2,7 +2,7 @@ package redisdb
 
 import "github.com/go-redis/redis"
 
-func New(host string, pass string, db string) *redis.Client {
+func New(host string, pass string, db int) *redis.Client {
 
 	return redis.NewClient(&redis.Options{
 		Addr:     host,
