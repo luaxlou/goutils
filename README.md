@@ -1,9 +1,11 @@
+感谢Jetbrain 为开源事业提供的支持。   
+[![Goland](goland.png =250x)](https://www.jetbrains.com/?from=goutils)
+
 # Golang Utils
 
 Golang 典型常用工具包，解决服务端开发的常用场景，提高每个项目的生产力。
  
-定位：每个工具可单独被使用，尽可能保持简洁，并且普适性，大多数典型的服务端可能会用到其中80%的工具。
-
+定位：每个工具可单独被使用，尽可能保持简洁，并且普适性，大多数典型的服务端可能会用到其中80%的工具。  
 
 ## tools 工具库 
 ### logutils 
