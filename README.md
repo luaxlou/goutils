@@ -1,5 +1,5 @@
-<center>[<img src="goland.png" width="100" height="100">](https://www.jetbrains.com/?from=goutils)</center> 
-<center>感谢Jetbrain 为开源事业提供的支持。</center>  
+[<img src="goland.png" width="100" height="100">](https://www.jetbrains.com/?from=goutils) 
+ 感谢Jetbrain 为开源事业提供的支持。
 
 # Golang Utils
 
