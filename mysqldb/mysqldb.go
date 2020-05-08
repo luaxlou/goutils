@@ -26,6 +26,14 @@ func DB() * gorm.DB {
 	return db
 }
 
+
+func Close()  {
+	if db !=nil {
+		db.Close()
+
+	}
+}
+
 func New(dsn string) *gorm.DB {
 
 	if dsn == "" {
