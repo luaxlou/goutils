@@ -1,11 +1,30 @@
 package mysqldb
 
 import (
+	"os"
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/jinzhu/gorm"
 )
+
+
+var db * gorm.DB
+
+func init() {
+
+	dsn := os.Getenv("DB_DSN")
+
+	if dsn != "" {
+
+		db = New(dsn)
+	}
+
+}
+
+func DB() * gorm.DB {
+	return db
+}
 
 func New(dsn string) *gorm.DB {
 
