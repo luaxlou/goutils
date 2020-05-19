@@ -25,8 +25,8 @@ func init() {
 	instance = r
 }
 
-//var dataUrl = "https://github.com/lionsoul2014/ip2region/raw/master/data/ip2region.db"
-var dataUrl = "https://gitee.com/lionsoul/ip2region/raw/master/data/ip2region.db"
+var dataUrl = "https://github.com/lionsoul2014/ip2region/raw/master/data/ip2region.db"
+//var dataUrl = "https://gitee.com/lionsoul/ip2region/raw/master/data/ip2region.db"
 
 func downloadIfNotExists() {
 
