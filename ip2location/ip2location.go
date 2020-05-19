@@ -12,7 +12,7 @@ import (
 
 var instance *ip2region.Ip2Region
 
-var pathname = "./cache/ip2region.db"
+var pathname = "./ip2region.db"
 
 func init() {
 	downloadIfNotExists()
@@ -25,15 +25,11 @@ func init() {
 	instance = r
 }
 
-var dataUrl = "https://github.com/lionsoul2014/ip2region/raw/master/data/ip2region.db"
+//var dataUrl = "https://github.com/lionsoul2014/ip2region/raw/master/data/ip2region.db"
+var dataUrl = "https://gitee.com/lionsoul/ip2region/raw/master/data/ip2region.db"
 
 func downloadIfNotExists() {
 
-	err := fileutils.MkDirIfNotExists("./cache")
-
-	if err != nil {
-		panic(err)
-	}
 
 	if fileutils.Exists(pathname) {
 
