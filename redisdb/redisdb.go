@@ -5,6 +5,7 @@ import (
 	"log"
 	"os"
 	"strconv"
+	"time"
 )
 
 var db *redis.Client
@@ -43,6 +44,6 @@ func New(host string, pass string, db int) *redis.Client {
 		Addr:        host,
 		Password:    pass, // no password set
 		DB:          db,   // use default DB
-		//DialTimeout: time.Minute,
+		DialTimeout: time.Minute,
 	})
 }
