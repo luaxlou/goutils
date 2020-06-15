@@ -45,5 +45,7 @@ func New(host string, pass string, db int) *redis.Client {
 		Password:    pass, // no password set
 		DB:          db,   // use default DB
 		DialTimeout: time.Minute,
+		ReadTimeout: time.Minute,
+		IdleTimeout: time.Minute,
 	})
 }
