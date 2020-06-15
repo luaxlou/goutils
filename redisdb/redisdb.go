@@ -2,6 +2,7 @@ package redisdb
 
 import (
 	"github.com/go-redis/redis"
+	"log"
 	"os"
 	"strconv"
 	"time"
@@ -36,6 +37,8 @@ func Close() {
 }
 
 func New(host string, pass string, db int) *redis.Client {
+
+	log.Println("connect to redis host",host)
 
 	return redis.NewClient(&redis.Options{
 		Addr:        host,
