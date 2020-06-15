@@ -4,6 +4,7 @@ import (
 	"github.com/go-redis/redis"
 	"os"
 	"strconv"
+	"time"
 )
 
 var db *redis.Client
@@ -27,9 +28,8 @@ func DB() *redis.Client {
 	return db
 }
 
-
-func Close()  {
-	if db !=nil {
+func Close() {
+	if db != nil {
 		db.Close()
 
 	}
@@ -38,8 +38,9 @@ func Close()  {
 func New(host string, pass string, db int) *redis.Client {
 
 	return redis.NewClient(&redis.Options{
-		Addr:     host,
-		Password: pass, // no password set
-		DB:       db,   // use default DB
+		Addr:        host,
+		Password:    pass, // no password set
+		DB:          db,   // use default DB
+		DialTimeout: time.Minute,
 	})
 }
