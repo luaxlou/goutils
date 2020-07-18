@@ -30,12 +30,7 @@ logutils.PrintObj(some Obj)
 - [x] MkDirIfNotExists 
 - [x] Remove 
 
-
-### dockerutils 
-docker环境下相关工具。
-
-
-- [x] GetMachineIp 获得宿主机ip
+ 
 
 
 ### envutils
