@@ -31,6 +31,13 @@ logutils.PrintObj(some Obj)
 - [x] Remove 
 
 
+### dockerutils 
+docker环境下相关工具。
+
+
+- [x] GetMachineIp 获得宿主机ip
+
+
 ### envutils
 APP环境变量管理工具,如envutils.IsProd()，用于判断当前是否属于生产环境。
 
