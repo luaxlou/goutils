@@ -11,6 +11,11 @@ import (
 
 var db *redis.Client
 
+func InitDefault(host string) {
+	db = New(host, "", 0)
+
+}
+
 func Init(host, pass string, n int) {
 	db = New(host, pass, n)
 
