@@ -10,22 +10,21 @@ import (
 
 var db *redis.Client
 
-func init() {
-
-	host := os.Getenv("REDIS_HOST")
-	rdb := os.Getenv("REDIS_DB")
-	pass := os.Getenv("REDIS_PASS")
-
-	if host != "" {
-
-		n, _ := strconv.Atoi(rdb)
-
-		db = New(host, pass, n)
-	}
-
-}
 
 func DB() *redis.Client {
+
+	if db == nil {
+		host := os.Getenv("REDIS_HOST")
+		rdb := os.Getenv("REDIS_DB")
+		pass := os.Getenv("REDIS_PASS")
+
+		if host != "" {
+
+			n, _ := strconv.Atoi(rdb)
+
+			db = New(host, pass, n)
+		}
+	}
 	return db
 }
 

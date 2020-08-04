@@ -11,18 +11,18 @@ import (
 
 var db * gorm.DB
 
-func init() {
+func DB() * gorm.DB {
 
-	dsn := os.Getenv("DB_DSN")
 
-	if dsn != "" {
+	if db ==nil {
+		dsn := os.Getenv("DB_DSN")
 
-		db = New(dsn)
+		if dsn != "" {
+
+			db = New(dsn)
+		}
 	}
 
-}
-
-func DB() * gorm.DB {
 	return db
 }
 
