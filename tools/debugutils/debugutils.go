@@ -9,7 +9,7 @@ var isDebug = false
 
 func init() {
 
-	if os.Getenv("debug") == "1" {
+	if os.Getenv("DEBUG") == "1" {
 		isDebug = true
 	}
 }
