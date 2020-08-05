@@ -38,6 +38,11 @@ ip工具类
 - [x] GetWanIp
 
 
+### debugutils 
+调试工具类，设置全局调试开关，可以开启和关闭调试
+
+具体看代码
+
 ### envutils
 APP环境变量管理工具,如envutils.IsProd()，用于判断当前是否属于生产环境。
 
