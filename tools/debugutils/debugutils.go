@@ -3,6 +3,8 @@ package debugutils
 import (
 	"log"
 	"os"
+
+	"github.com/luaxlou/goutils/tools/logutils"
 )
 
 var isDebug = false
@@ -29,6 +31,15 @@ func Println(v ...interface{}) {
 		log.Println(v...)
 	}
 }
+
+
+func PrintObj(v interface{}) {
+	if isDebug {
+
+		logutils.PrintObj(v)
+	}
+}
+
 
 func Printf(format string, v ...interface{}) {
 
