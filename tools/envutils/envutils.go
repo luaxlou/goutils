@@ -25,6 +25,10 @@ func SetEnv(env string) {
 
 }
 
+func GetEnv() string {
+	return currEnv
+}
+
 func IsProd() bool {
 	return currEnv == Prod
 
