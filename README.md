@@ -133,3 +133,7 @@ ip2location.GetLocation(ip)
 ### asyncqueue  
 
 内存级异步队列
+
+### safeexit  
+
+优雅退出进程
