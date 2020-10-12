@@ -5,29 +5,22 @@ import (
 	"sync"
 )
 
-type Queue interface {
-	Push(interface{})
-	BatchPush([]interface{})
-	BatchPop(n int) []interface{}
-	Pop() interface{}
-}
-
-type queue struct {
+type Queue struct {
 	*sync.Mutex
 	*sync.Cond
 	*list.List
 }
 
-func NewQueue() Queue {
+func New() *Queue {
 	mut := &sync.Mutex{}
-	return &queue{
+	return &Queue{
 		Mutex: mut,
 		Cond:  sync.NewCond(mut),
 		List:  list.New(),
 	}
 }
 
-func (q *queue) Push(item interface{}) {
+func (q *Queue) Push(item interface{}) {
 	q.Lock()
 	q.PushBack(item)
 	q.Unlock()
@@ -35,7 +28,7 @@ func (q *queue) Push(item interface{}) {
 	q.Signal()
 }
 
-func (q *queue) BatchPush(items []interface{}) {
+func (q *Queue) BatchPush(items []interface{}) {
 	q.Lock()
 
 	for _, item := range items {
@@ -47,7 +40,7 @@ func (q *queue) BatchPush(items []interface{}) {
 	q.Signal()
 }
 
-func (q *queue) Pop() interface{} {
+func (q *Queue) Pop() interface{} {
 	q.Lock()
 	defer q.Unlock()
 
@@ -58,14 +51,9 @@ func (q *queue) Pop() interface{} {
 	return q.Remove(q.Front())
 }
 
-func (q *queue) BatchPop(n int) []interface{} {
+func (q *Queue) BatchPop(n int) []interface{} {
 	q.Lock()
 	defer q.Unlock()
-
-	for q.Len() == 0 {
-		q.Wait()
-	}
-
 	l := q.Len()
 
 	if l < n {
@@ -80,4 +68,12 @@ func (q *queue) BatchPop(n int) []interface{} {
 	}
 
 	return items
+}
+
+func (q *Queue) PopAll() []interface{} {
+	q.Lock()
+	defer q.Unlock()
+	l := q.Len()
+
+	return q.BatchPop(l)
 }
