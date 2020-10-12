@@ -49,6 +49,11 @@ APP环境变量管理工具,如envutils.IsProd()，用于判断当前是否属�
 具体看代码 [tools/envutils/envutils.go](tools/envutils/envutils.go)
 
 
+### 其他
+
+更多工具详见 [tools/](tools/)
+
+
 
 ## wechat 微信相关API的开发
 ### corpwechat 
@@ -121,3 +126,10 @@ ip2location.GetLocation(ip)
 依赖项目：[https://github.com/lionsoul2014/ip2region/](https://github.com/lionsoul2014/ip2region/)
 
 具体看测试用例： [ip2location/ip2location_test.go](ip2location/ip2location_test.go)
+
+
+
+
+### asyncqueue  
+
+内存级异步队列
