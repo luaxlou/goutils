@@ -50,10 +50,10 @@ func Close() {
 		db.Close()
 
 	}
+	instances.Range(func(key, value interface{}) bool {
+		value.(*gorm.DB).Close()
 
-	if instances != nil {
-		for _, ins := range instances {
-			ins.Close()
-		}
-	}
+		return true
+
+	})
 }
