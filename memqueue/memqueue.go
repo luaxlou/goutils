@@ -1,4 +1,4 @@
-package asyncqueue
+package memqueue
 
 import (
 	"container/list"

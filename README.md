@@ -130,7 +130,7 @@ ip2location.GetLocation(ip)
 
 
 
-### asyncqueue  
+### memqueue  
 
 内存级异步队列
 
