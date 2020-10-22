@@ -41,18 +41,6 @@ func (q *Queue) BatchPush(items []interface{}) {
 }
 
 
-func (q *Queue) BatchPushs(items ...interface{}) {
-	q.Lock()
-
-	for _, item := range items {
-		q.PushBack(item)
-
-	}
-	q.Unlock()
-
-	q.Signal()
-}
-
 func (q *Queue) Pop() interface{} {
 	q.Lock()
 	defer q.Unlock()
