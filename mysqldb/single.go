@@ -3,7 +3,7 @@ package mysqldb
 import (
 	"os"
 
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 //使用单例模式======

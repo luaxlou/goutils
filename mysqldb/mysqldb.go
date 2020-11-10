@@ -3,8 +3,8 @@ package mysqldb
 import (
 	"time"
 
-	_ "github.com/go-sql-driver/mysql"
-	"github.com/jinzhu/gorm"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 )
 
 func New(dsn string) *gorm.DB {
@@ -26,11 +26,15 @@ func initDB(dsn string) (db *gorm.DB) {
 
 	}
 
-	db, err := gorm.Open("mysql", dsn)
+	mysqldb := mysql.Open(dsn)
 
-	db.DB().SetMaxIdleConns(10)
-	db.DB().SetMaxOpenConns(200)
-	db.DB().SetConnMaxLifetime(3 * 60 * time.Second)
+	db, err := gorm.Open(mysqldb, &gorm.Config{})
+
+	rawDb, _ := db.DB()
+
+	rawDb.SetMaxIdleConns(10)
+	rawDb.SetMaxOpenConns(200)
+	rawDb.SetConnMaxLifetime(3 * 60 * time.Second)
 
 	if err != nil {
 		panic("mysql connect error " + err.Error())
@@ -47,11 +51,24 @@ func initDB(dsn string) (db *gorm.DB) {
 
 func Close() {
 	if db != nil {
-		db.Close()
+
+		rawDb, _ := db.DB()
+
+		if rawDb != nil {
+			rawDb.Close()
+
+		}
 
 	}
 	instances.Range(func(key, value interface{}) bool {
-		value.(*gorm.DB).Close()
+
+		g := value.(*gorm.DB)
+
+		rawDb, _ := g.DB()
+
+		if rawDb != nil {
+			rawDb.Close()
+		}
 
 		return true
 
