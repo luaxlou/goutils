@@ -1,10 +1,13 @@
 package mysqldb
 
 import (
+	"log"
+	"os"
 	"time"
 
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
+	"gorm.io/gorm/logger"
 )
 
 func New(dsn string) *gorm.DB {
@@ -28,7 +31,15 @@ func initDB(dsn string) (db *gorm.DB) {
 
 	mysqldb := mysql.Open(dsn)
 
-	db, err := gorm.Open(mysqldb, &gorm.Config{})
+	db, err := gorm.Open(mysqldb, &gorm.Config{
+		Logger: logger.New(
+			log.New(os.Stdout, "\r\n", log.LstdFlags), // io writer
+			logger.Config{
+				SlowThreshold: time.Second,   // 慢 SQL 阈值
+				LogLevel:      logger.Warn, // Log level
+			},
+		),
+	})
 
 	rawDb, _ := db.DB()
 
