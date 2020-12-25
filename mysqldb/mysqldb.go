@@ -29,13 +29,16 @@ func initDB(dsn string) (db *gorm.DB) {
 
 	}
 
-	mysqldb := mysql.Open(dsn)
+	mysqldb := mysql.New(mysql.Config{
+		DSN:               dsn,
+		DefaultStringSize: 256,
+	})
 
 	db, err := gorm.Open(mysqldb, &gorm.Config{
 		Logger: logger.New(
 			log.New(os.Stdout, "\r\n", log.LstdFlags), // io writer
 			logger.Config{
-				SlowThreshold: time.Second,   // 慢 SQL 阈值
+				SlowThreshold: time.Second, // 慢 SQL 阈值
 				LogLevel:      logger.Warn, // Log level
 			},
 		),
