@@ -39,7 +39,7 @@ func initDB(dsn string) (db *gorm.DB) {
 			log.New(os.Stdout, "\r\n", log.LstdFlags), // io writer
 			logger.Config{
 				SlowThreshold: time.Second, // 慢 SQL 阈值
-				LogLevel:      logger.Error, // Log level
+				LogLevel:      logger.Silent, // Log level
 			},
 		),
 	})
