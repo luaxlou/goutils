@@ -17,7 +17,7 @@ func Capture(beforeExit func()) {
 		case syscall.SIGHUP, syscall.SIGINT, syscall.SIGTERM:
 			log.Println("收到退出信号:", s)
 			beforeExit()
-			return
+			os.Exit(0)
 		}
 	}
 }
