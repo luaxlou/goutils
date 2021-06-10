@@ -7,7 +7,7 @@ import (
 	"google.golang.org/grpc"
 )
 
-func Connect(address string, onConnected func(conn *grpc.ClientConn)) {
+func Connect(address string) *grpc.ClientConn {
 
 	log.Println("grpc connecting to", address)
 
@@ -16,9 +16,9 @@ func Connect(address string, onConnected func(conn *grpc.ClientConn)) {
 		log.Fatalf("did not connect: %v", err)
 
 		time.Sleep(time.Millisecond * 100)
-		Connect(address, onConnected)
+		return Connect(address)
 	}
 
-	onConnected(conn)
+	return conn
 
 }
