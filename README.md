@@ -137,3 +137,6 @@ ip2location.GetLocation(ip)
 ### safeexit  
 
 优雅退出进程
+### grpc server and grpc client  
+
+对grpc客户端和服务端进行封装，省去自动连接等细节
