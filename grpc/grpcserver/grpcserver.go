@@ -11,7 +11,7 @@ import (
 	"google.golang.org/grpc"
 )
 
-func Start(port string, onListen func(s *grpc.Server), onError func(msg string) error) {
+func Start(port string, onListen func(s *grpc.Server), onError func(msg string)) {
 
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
