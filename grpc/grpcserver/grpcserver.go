@@ -1,13 +1,17 @@
 package grpcserver
 
 import (
+	"fmt"
 	"log"
 	"net"
+	"runtime"
 
+	"github.com/grpc-ecosystem/go-grpc-middleware"
+	"github.com/grpc-ecosystem/go-grpc-middleware/recovery"
 	"google.golang.org/grpc"
 )
 
-func Start(port string, onListen func(s *grpc.Server)) {
+func Start(port string, onListen func(s *grpc.Server), onError func(msg string) error) {
 
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
@@ -15,7 +19,26 @@ func Start(port string, onListen func(s *grpc.Server)) {
 	}
 
 	log.Println("Start rpc server at", lis.Addr())
-	s := grpc.NewServer()
+
+	recoverHandler := func(p interface{}) error {
+
+		msg := ""
+		switch p.(type) {
+		case runtime.Error:
+			msg = fmt.Sprintf("runtime error: %v", p)
+		default:
+			msg = fmt.Sprintf("error: %v", p)
+		}
+
+		onError(msg)
+
+		return nil
+	}
+
+	s := grpc.NewServer(
+		grpc.UnaryInterceptor(grpc_middleware.ChainUnaryServer(
+			grpc_recovery.UnaryServerInterceptor(grpc_recovery.WithRecoveryHandler(recoverHandler)),
+		)))
 
 	onListen(s)
 
