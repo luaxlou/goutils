@@ -14,6 +14,9 @@ require (
 	github.com/shopspring/decimal v1.2.0
 	go.mongodb.org/mongo-driver v1.3.5
 	golang.org/x/crypto v0.0.0-20191205180655-e7c4368fe9dd // indirect
+	golang.org/x/net v0.0.0-20210525063256-abc453219eb5 // indirect
+	golang.org/x/sys v0.0.0-20210608053332-aa57babbf139 // indirect
+	google.golang.org/genproto v0.0.0-20210608205507-b6d2f5bf0d7d // indirect
 	gorm.io/driver/mysql v1.0.3
 	gorm.io/gorm v1.20.6
 )
