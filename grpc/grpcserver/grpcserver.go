@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"os"
 	"runtime"
 
 	"github.com/grpc-ecosystem/go-grpc-middleware"
@@ -31,6 +32,8 @@ func Start(port string, onListen func(s *grpc.Server), onError func(msg string))
 		}
 
 		onError(msg)
+
+		os.Exit(0)
 
 		return nil
 	}
