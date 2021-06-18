@@ -5,7 +5,6 @@ import (
 	"log"
 	"net"
 	"os"
-	"runtime"
 
 	"github.com/kazegusuri/grpc-panic-handler"
 	"google.golang.org/grpc"
@@ -20,18 +19,12 @@ func Start(port string, onListen func(s *grpc.Server), onError func(msg string))
 
 	log.Println("Start rpc server at", lis.Addr())
 
-
 	panichandler.InstallPanicHandler(func(p interface{}) {
 
-		msg := ""
-		switch p.(type) {
-		case runtime.Error:
-			msg = fmt.Sprintf("%v", p)
-		default:
-			msg = fmt.Sprintf("%v", p)
-		}
 
-		onError(msg)
+		panichandler.LogPanicStackMultiLine(p)
+
+		onError(fmt.Sprintf("%v", p))
 
 		os.Exit(0)
 
