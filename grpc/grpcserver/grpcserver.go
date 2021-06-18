@@ -7,8 +7,7 @@ import (
 	"os"
 	"runtime"
 
-	"github.com/grpc-ecosystem/go-grpc-middleware"
-	"github.com/grpc-ecosystem/go-grpc-middleware/recovery"
+	"github.com/kazegusuri/grpc-panic-handler"
 	"google.golang.org/grpc"
 )
 
@@ -21,27 +20,28 @@ func Start(port string, onListen func(s *grpc.Server), onError func(msg string))
 
 	log.Println("Start rpc server at", lis.Addr())
 
-	recoverHandler := func(p interface{}) error {
+
+	panichandler.InstallPanicHandler(func(p interface{}) {
 
 		msg := ""
 		switch p.(type) {
 		case runtime.Error:
-			msg = fmt.Sprintf("runtime error: %v", p)
+			msg = fmt.Sprintf("%v", p)
 		default:
-			msg = fmt.Sprintf("error: %v", p)
+			msg = fmt.Sprintf("%v", p)
 		}
 
 		onError(msg)
 
 		os.Exit(0)
 
-		return nil
-	}
+		return
+	})
 
 	s := grpc.NewServer(
-		grpc.UnaryInterceptor(grpc_middleware.ChainUnaryServer(
-			grpc_recovery.UnaryServerInterceptor(grpc_recovery.WithRecoveryHandler(recoverHandler)),
-		)))
+		grpc.UnaryInterceptor(panichandler.UnaryPanicHandler),
+
+	)
 
 	onListen(s)
 
