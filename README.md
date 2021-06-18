@@ -54,41 +54,12 @@ APP环境变量管理工具,如envutils.IsProd()，用于判断当前是否属�
 更多工具详见 [tools/](tools/)
 
 
+## redisdb
+简化redis客户端 初始化
+ 
 
-## wechat 微信相关API的开发
-### corpwechat 
-企业微信API封装， 对 access_token 做了lazy load 和过期刷新。
-
-- [x] GetAccessToken 单独获得access_token，以便做扩展开发用。
-- [x] GetUserInfo 获取 UserId。
-- [x] SendTextMessage 获取 发送消息。
-
-### wechatapp
-小程序API封装
-
-- [x] Login 登陆
-- [x] 手机号解密 摘自 https://github.com/medivhzhan/weapp
-
-### payment
-
-微信支付封装,对 github.com/liyoung1992/wechatpay 项目进行了再一次包装
-
-- [x] Pay 支付。
-- [x] VerifyNotify 对支付结果进行验证。
-- [x] GetPaySign 小程序二次签名。
-
-
-
-### redisdb
-简化redis 初始化
-
-### mongo
-对官方驱动Mongo 官方驱动的封装，对常规CRUD进行了简化。
-具体看代码 [mongo/crud.go](mongo/crud.go)
-
-
-### mysqldb
-对mysql实例化过程进行了封装，默认使用gorm包装。
+## mysqldb
+对mysql客户端实例化过程进行了封装，默认使用gorm包装。
  
  
 ### gindefault
@@ -113,26 +84,6 @@ gindefault.returnError()
 ```
 
 具体看代码 [gindefault/utils.go](gindefault/utils.go)
-
-
-### ip2location 
-自动下载ip数据库，内存中识别ip对应地址。
-使用方法 
-
-```
-ip2location.GetLocation(ip)
-```
-
-依赖项目：[https://github.com/lionsoul2014/ip2region/](https://github.com/lionsoul2014/ip2region/)
-
-具体看测试用例： [ip2location/ip2location_test.go](ip2location/ip2location_test.go)
-
-
-
-
-### memqueue  
-
-内存级异步队列
 
 ### safeexit  
 
