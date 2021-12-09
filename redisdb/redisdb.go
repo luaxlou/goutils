@@ -1,12 +1,12 @@
 package redisdb
 
 import (
-	"log"
+ 	"log"
 	"os"
 	"strconv"
 	"time"
 
-	"github.com/go-redis/redis"
+	"github.com/go-redis/redis/v8"
 )
 
 var db *redis.Client
