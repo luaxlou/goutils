@@ -21,12 +21,12 @@ func Add(name string, url string, token string) {
 
 }
 
-func GetInstance(name string) *influxdb2.Client {
+func GetInstance(name string) influxdb2.Client {
 
 	ins, ok := instances.Load(name)
 
 	if ok {
-		return ins.(*influxdb2.Client)
+		return ins.(influxdb2.Client)
 	}
 
 	return nil
