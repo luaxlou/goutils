@@ -1,6 +1,8 @@
 [<img src="goland.png" width="100" height="100">](https://www.jetbrains.com/?from=goutils) 
  感谢Jetbrain 为开源事业提供的支持。
 
+!!! 作者友情提示，请不要使用该项目。该项目有诸多地方欠考虑。
+
 # Golang Utils
 
 Golang 典型常用工具包，解决服务端开发的常用场景，提高每个项目的生产力。
